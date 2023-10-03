@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   //De-Bouncing--Make an API call if diffrence between two key strokes is > 200ms
   useEffect(() => {
@@ -29,7 +31,7 @@ const Header = () => {
 
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
-    console.log(json[1]);
+    setSuggestions(json[1]);
   };
 
   const toggleMenuHandler = () => {
@@ -47,15 +49,35 @@ const Header = () => {
         <img className="h-12 mx-2" alt="logo" src={LOGO_URL} />
       </div>
       <div className="px-10 col-span-8">
-        <input
-          className="w-1/2 border border-gray-400 p-2 rounded-l-full"
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button className="border border-gray-400 p-2 rounded-r-full">
-          Search
-        </button>
+        <div>
+          <input
+            className="w-1/2 border border-gray-400 p-2 rounded-l-full px-5 py-2"
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setShowSuggestions(false)}
+          />
+          <button className="border border-gray-400 p-2 rounded-r-full ">
+            Search
+          </button>
+        </div>
+        {showSuggestions && (
+          <div className="fixed bg-white py-2 px-2 w-[28rem] shadow-lg rounded-lg border border-gray-100">
+            <ul>
+              {suggestions?.map((items) => {
+                return (
+                  <li
+                    className="py-2 px-3 shadow-sm hover:bg-gray-100"
+                    key={items.id}
+                  >
+                    {items}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
       </div>
       <div className="col-span-1">
         <img className="h-8" alt="user-icon" src={ICON_URL} />
