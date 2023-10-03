@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -9,7 +10,7 @@ const Sidebar = () => {
     <div className="p-3 max-h-screen hover:overflow-y-scroll overflow-hidden overscroll-contain  bg-white text-left w-[280px]">
       <ul>
         <li className="my-1 p-1 py-2 hover:bg-gray-100 cursor-pointer rounded-lg">
-          Home
+          <Link to="/">Home</Link>
         </li>
         <li className="my-1 p-1 py-2 hover:bg-gray-100 cursor-pointer rounded-lg">
           Shorts
