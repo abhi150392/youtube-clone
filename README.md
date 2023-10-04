@@ -4,11 +4,11 @@
 
 # Implemented searchbar by using youtube API
 
-# Implemented search to give suggestions
+-- Implemented search to give suggestions
+-- Implemented Caching--using redux as cache
+-- Store the search results in Redux Store
 
-# Implemented Caching--using redux as cache
-
-# Store the search results in Redux Store
+# Caching
 
 Cache : object/map datastructure
 
@@ -16,3 +16,5 @@ res : [i,ip,iphone]
 
 --to search in an array : o(n)
 --to search in an Object : o(n)
+
+# Implemnted N-level nested comments
