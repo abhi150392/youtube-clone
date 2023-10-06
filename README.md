@@ -21,3 +21,7 @@ res : [i,ip,iphone]
 --to search in an Object : o(n)
 
 # Implemnted N-level nested comments
+
+# Implemented Live chat -- API pooling
+
+-- Optimized it using splice
