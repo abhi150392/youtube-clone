@@ -1,5 +1,8 @@
 # Used Youtube API to fetch the live data
 
+--Web Sockets(handsake--> data flows both directons)
+-- APi Pooling(Unidirectional)--> after certain interval
+
 # Implemented Debouncing - to limit api calls on every keypress
 
 # Implemented searchbar by using youtube API
